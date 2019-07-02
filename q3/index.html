@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <!-- js中的浅拷贝和深拷贝 -->
+  <!-- <script>
+    // 解构
+    function example() {
+      return [1, 2, 3]
+    }
+    // let b = example()[1]
+    // console.log(b)
+    let [a, b, c] = example()
+    console.log(a)
+    let [x, y] = [1, 2]
+    // 对象的解构
+    // let {foo, bar} = {f00: 'aaa', bar: 'bbb'}    // 后面的key值一定要和前面对应上
+    let {foo: baz} = {foo: 'abc'}
+    // console.log(foo)       // 输出foo undefined ，因为foo已经被重新命名了
+    console.log(baz)
+  </script> -->
+  <script>
+    // 浅拷贝
+    let obj = {
+      name: '蜗牛',
+      age: 26,
+      like: ['sing', 'rapper']
+    }
+    
+    let obj2 = Object.assign({}, obj)
+    let obj3 = {...obj}
+    obj.name = '蜗牛小生'   // 基础类型改变不会影响浅拷贝
+    obj.like.push('coding')   // 非基础类型 才会影响浅拷贝
+    console.log(obj2)
+    console.log(obj3)
+
+    // 深拷贝
+    let obj4 = JSON.parse(JSON.stringify(obj))
+    obj.name = '蜗牛小生'
+    console.log(obj4)
+  </script>
+</body>
+</html>
