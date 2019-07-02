@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <!-- 闭包  能访问函数定义时所在的词法作用域-->
+  <script>
+    // 闭包的作用：
+    // 1. 阻止当前词法作用域被回收
+    // function foo() {
+    //   var a = 2
+    //   return function fn() {
+    //     console.log(a)
+    //   }
+    // }
+    // let func = foo()
+    // func()
+    
+    // 2. 模拟块级作用域
+    var a = []
+    for (let i = 0; i < 10; i++) {
+      a[i] = (function(j) {
+        return function() {
+          console.log(j)
+        }
+      })(i)
+    }
+    a[6]()
+  </script>
+</body>
+</html>
