@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <!-- call bind apply -->
+  <script>
+    var a = {
+      user: '蜗牛',
+      fn: function (n, m) {
+        console.log(this.user)
+        console.log(n + m)
+      }
+    }
+    // a.fn()        // 输出 蜗牛     this指向a 
+    var b = a.fn
+    // b.call()
+    // b()        // 输出 unfined  this指向window
+    // b.call(a, 5)     // call将b的this作用域同步到a上
+    // b.apply(a, [0, 2])
+    var c = b.bind(a, 5)   // bind的返回值是函数
+    c(1, 2)
+    // call方法的实现原理
+    Function.prototype.call = function() {
+      let [thisArg, ...args] = [...arguments]
+      if (!thisArg) {
+        thisArg = typeof window === 'undefined' ? global : window
+      }
+      // this的指向是当前函数 func.call
+      thisArg.func = this
+      // 执行函数
+      let result = thisArg.func(...args)
+      delete thisArg.func     // thisArg上并没有func属性，因此需要移除
+      return result
+    }
+  </script>
+</body>
+</html>
