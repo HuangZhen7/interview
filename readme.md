@@ -35,3 +35,11 @@ new的实现原理：
   2. 私有化变量
   3. 模拟块级作用域
   
+#q5 数组去重
+1. Set      [...new Set(arr)]
+2. indexOf
+3. includes
+4. map
+5. reduce
+
+#q6 防抖节流函数原理
