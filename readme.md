@@ -43,3 +43,7 @@ new的实现原理：
 5. reduce
 
 #q6 防抖节流函数原理
+
+#q7 __proto__ 和 prototype 关联
+  __proto__是每一个实例都有的属性，可以访问[prototype]属性，
+  实例的__proto__与其构造函数的prototype指向的是同一对象
