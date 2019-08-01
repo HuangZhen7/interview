@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <div id="id">
+    <input type="text" id="txt">
+    <p id="show-txt"></p>
+  </div>
+  <script>
+    var obj = {}
+    Object.defineProperty(obj, 'txt', {
+      get() {  // 读取属性
+        return obj
+      },
+      set(newValue) {
+        newValue = document.getElementById('txt').value
+        document.getElementById('show-txt').innerHTML = newValue
+      }
+    })
+    document.addEventListener('keyup', function(e) {
+      // console.log(e.target.value)
+      obj.txt = e.target.value
+      // document.getElementById('show-txt').innerHTML = obj.txt || ''  // 虽然能实现功能，但不符合mvvm的思想 不是双向数据绑定
+    })
+  </script>
+</body>
+</html>
