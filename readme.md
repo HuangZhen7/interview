@@ -81,5 +81,22 @@ new的实现原理：
   clientTop：表示边框border的厚度， 未指定的情况下一般为0
   scrollTop：表示滚动后被隐藏的高度
 
-#16 js拖拽功能的实现
+# q16 js拖拽功能的实现
   
+# q17 类的创建和继承
+
+# q18 click在ios手机上有300ms延迟，原因及解决方法
+  原因： 由于有双击放大功能  在第一次点击后，会判断300ms内是否还会点击一下，是的话就方法；否则300ms后才去执行click事件
+  解决方法：
+    1. 禁止双击放大功能
+      <meta name="viewport" content="width=device-width, initial-scale=no">   
+    2. fastClick
+      原理：检测到touchEnd事件后，立刻发出模拟click事件，并把浏览器300ms之后真实发出的事件阻断
+
+# q19 cookies、sessionStorage、localStorage的区别
+  cookies:数据始终在同源的http请求中携带（即使不需要），即cookies在浏览器和服务器之间来回传递，
+          而sessionStorage和localStorage不会自动把数据发给服务器，仅在本地保存。
+          cookies还有路径(path)的概念，可以限制cookies只属于某个路径下，存储大小只有4k左右
+
+  sessionStorage:仅在当前浏览器窗口关闭前有效，不能长久保存
+  localStorage:在所以的同源窗口都是共享的 存储大小为5M左右
